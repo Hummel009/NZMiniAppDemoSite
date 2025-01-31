@@ -16,6 +16,6 @@ jobs:
         uses: actions/checkout@main
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@main
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: public
