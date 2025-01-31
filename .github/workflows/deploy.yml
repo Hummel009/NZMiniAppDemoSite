@@ -1,20 +1,17 @@
 name: Deploy to GitHub Pages
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push]
 permissions:
-  contents: read
+  contents: write
 jobs:
   deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@main
-
+      - name: Install
+        run: |
+          npm ci
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
